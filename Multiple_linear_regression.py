@@ -16,8 +16,8 @@ print(X)
 # Encoding categorical data
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
-ct = ColumnTransformer(transformers=[('encoder', OneHotEncoder(), [3])], remainder='passthrough')
-X = np.array(ct.fit_transform(X))
+mt = ColumnTransformer(transformers=[('encoder', OneHotEncoder(), [3])], remainder='passthrough')
+X = np.array(mt.fit_transform(X))
 print(X)
 
 # Splitting the dataset into the Training set and Test set
