@@ -16,6 +16,8 @@ print(X)
 # Encoding categorical data
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
+
+#creating one hot encoder object with categorial feature 3 indicating the 4th column#
 mt = ColumnTransformer(transformers=[('encoder', OneHotEncoder(), [3])], remainder='passthrough')
 X = np.array(mt.fit_transform(X))
 print(X)
