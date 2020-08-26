@@ -30,8 +30,25 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, rando
 from sklearn.linear_model import LinearRegression
 reg = LinearRegression()
 reg.fit(X_train, y_train)
+#Print the constant and the coefficient# 
+print(f'constant = {reg.intercept_}')
+print(f'coefficient = {reg.coef_}')
 
 # Predicting the Test set results
 y_pred = reg.predict(X_test)
-np.set_printoptions(precision=2)
-print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1)),1))
+
+#Display actual and predicted values side by side#
+df= pd.DataFrame(data=y_test, columns= ['y_test'])
+df['y_predict'] = y_pred
+print(df)
+
+#Model evaluation#
+from sklearn import metrics
+r_square = metrics.r2_score(y_test, y_pred)
+print('R-Square Error:', r_square)
+
+from sklearn.metrics import mean_poisson_deviance
+MPD= mean_poisson_deviance(Y_test, Y_pred)
+print('Mean poisson deviance:', MPD)
+
+#Note: In regression model, for model evaluation we use R-squared value, RMSE; RSE; MAE. for evaluation of the classification method, we use proper confusion matrix#
