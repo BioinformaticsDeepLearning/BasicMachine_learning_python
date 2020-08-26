@@ -74,3 +74,7 @@ plt.show()
 from sklearn import metrics
 r_square = metrics.r2_score(Y_test, Y_pred)
 print('R-Square Error:', r_square)
+
+from sklearn.metrics import mean_poisson_deviance
+MPD= mean_poisson_deviance(Y_test, Y_pred)
+print('Mean poisson deviance:', MPD)
